@@ -25,8 +25,14 @@ async def start_command(client, message):
                 )
             ],
             [
-                InlineKeyboardButton("📚 Help", callback_data="help"),
-                InlineKeyboardButton("📊 Stats", callback_data="stats"),
+                InlineKeyboardButton(
+                    "📚 Help",
+                    callback_data="help",
+                ),
+                InlineKeyboardButton(
+                    "📊 Stats",
+                    callback_data="stats",
+                ),
             ],
             [
                 InlineKeyboardButton(
@@ -48,17 +54,19 @@ async def start_command(client, message):
     )
 
     text = f"""
-✨ **Welcome to {BOT_NAME}**
+**🎵 Welcome to {BOT_NAME}**
 
-🎵 Professional Telegram Music Bot
+━━━━━━━━━━━━━━━━━━
 
-✅ High Quality Music
-✅ Fast Streaming
-✅ Queue System
-✅ Admin Controls
-✅ Modern UI
+✨ High Quality Music
+🎧 Fast Streaming
+📜 Queue System
+👑 Admin Controls
+⚡ Super Fast Performance
 
-Click the buttons below to get started.
+━━━━━━━━━━━━━━━━━━
+
+Choose an option below.
 """
 
     await message.reply_text(
