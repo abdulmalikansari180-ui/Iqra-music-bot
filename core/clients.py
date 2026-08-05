@@ -1,12 +1,12 @@
 from pyrogram import Client
 from config import API_ID, API_HASH, BOT_TOKEN
 
-# Main Bot Client
 app = Client(
-    "IqraMusicBot",
+    name="IqraMusic",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
-    workers=50,
-    sleep_threshold=30,
+    workers=100,
+    sleep_threshold=60,
+    in_memory=True,
 )
