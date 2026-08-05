@@ -1,18 +1,16 @@
-import os
 import importlib
 import logging
+import pkgutil
 
-LOGGER = logging.getLogger("IqraMusic.Loader")
+LOGGER = logging.getLogger(__name__)
 
 
 def load_plugins():
-    plugins_path = "plugins"
+    import plugins
 
-    for file in os.listdir(plugins_path):
-        if file.endswith(".py") and not file.startswith("__"):
-            module = f"plugins.{file[:-3]}"
-            try:
-                importlib.import_module(module)
-                LOGGER.info(f"✅ Loaded Plugin: {file}")
-            except Exception as e:
-                LOGGER.error(f"❌ Failed to load {file}: {e}")
+    for module in pkgutil.iter_modules(plugins.__path__):
+        try:
+            importlib.import_module(f"plugins.{module.name}")
+            LOGGER.info(f"Loaded Plugin: {module.name}")
+        except Exception as e:
+            LOGGER.error(f"Failed to load {module.name}: {e}")
